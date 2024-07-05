@@ -1,107 +1,108 @@
-# Preface
+# 前言
 
-This book is targeted at folks wanting to learn F# and assumes that the reader has no real knowledge of F# or functional programming. Some programming experience, particularly in C# or VB.NET, may be useful but not absolutely necessary.
+本书面向希望学习 F# 的读者，假设读者对 F# 或函数式编程没有实际了解。有一些编程经验，特别是 C# 或 VB.NET 方面的经验，可能会有帮助，但并非绝对必要。
 
-Although F# has often been portrayed as a functional programming language, it isn't, and neither is this book purely about functional programming. You are not going to learn about Category Theory, Lambda Calculus, or even Monads. You will learn things about programming in a functional-first style as a by-product of how we solve problems with F#. You will discover how F#'s functional-first approach to programming [empowers everyone to write succinct, robust, and performant code](<https://fsharp.org/>). You will learn a lot of new terminology as you read this book but only enough to understand the features of F# that allow us to solve real-world problems with clearly expressed and concise code. What you will take away most from this book is an understanding of how F# supports us by generally making it easier for us to write code the F# way than it is to be a functional programming purist.
+尽管 F# 通常被描述为一种函数式编程语言，但实际上并非如此，本书也不仅仅是关于函数式编程的。你不会学习到范畴理论、λ 演算，甚至 Monad。你将通过我们用 F# 解决问题的方式，顺便学到一些函数式优先编程的知识。你会发现 F# 的函数式优先编程方法如何[使每个人都能编写简洁、健壮和高性能的代码](<https://fsharp.org/>)。在阅读本书时，你会学到许多新术语，但只是足够理解 F# 的特性，这些特性允许我们用清晰简洁的代码解决现实世界的问题。你从本书中最重要的收获将是了解 F# 如何通过通常使我们更容易以 F# 的方式编写代码，而不是成为一个纯粹的函数式编程者来支持我们。
 
-For many historical reasons, functional programming has been viewed as difficult to learn and not very practical by most .NET developers. Functional programming is too often regarded as being too steeped in mathematics and academia to be of any use for writing the everyday line of business applications that most of us work on. This book is designed to help dispel those impressions. So the obvious question to ask is:
+由于许多历史原因，大多数 .NET 开发人员认为函数式编程难以学习且不实用。函数式编程常常被认为过于数学化和学术化，无法用于编写我们大多数人从事的日常业务应用程序。本书旨在帮助消除这些印象。所以显而易见的问题是：
 
-> What is F# good for?
+> F# 擅长什么？
 
-Whilst it's great for many things like web programming, cloud programming, Machine Learning, AI, and Data Science, the most accurate answer comes from a long-standing F# Community member [Dave Thomas](<https://twitter.com/7sharp9_>):
+虽然它非常适合许多事情，如 Web 编程、云编程、机器学习、人工智能和数据科学，但最准确的答案来自长期 F# 社区成员 [Dave Thomas](<https://twitter.com/7sharp9_>)：
 
->  "F# is good for programming"
+> “F# 适合编程”
 
-F# is a general-purpose language for the .NET platform along with C# and VB.NET. F# has been bundled with Visual Studio, and now the .NET SDK, since 2010. The language has been quite stable since then. Code written in 2010 is not only still valid today but is also likely to be stylistically similar to current standards.
+F# 是 .NET 平台上的一种通用语言，与 C# 和 VB.NET 一起。自 2010 年以来，F# 就被捆绑在 Visual Studio 和 .NET SDK 中。自那时以来，该语言相当稳定。2010 年编写的代码不仅今天仍然有效，而且在风格上也可能与当前标准相似。
 
-Why would you choose F# over another language? I noticed a question from [cancelerx](<https://twitter.com/ndy40>) on Twitter:
+为什么要选择 F# 而不是其他语言？我注意到 [cancelerx](<https://twitter.com/ndy40>) 在 Twitter 上提出了一个问题：
 
-> "I would like to do a lightning talk on F#. My team is primarily PHP and Python devs. What should I showcase?  I want to light a spark."
+> “我想做一个关于 F# 的闪电演讲。我的团队主要是 PHP 和 Python 开发人员。我应该展示什么？我想点燃一丝火花。”
 
-My response was:
+我的回答是：
 
-> The expressive type system, composition with the forward pipe operator, pattern matching, collections, and the REPL.
+> 表达性类型系统、前向管道操作符的组合、模式匹配、集合和 REPL。
 
-I've been thinking about my answer and whilst I still think that the list is a good one, I think that I should have said that it is how the various features work together that makes F# so special, not the individual features themselves. It feels like a well-thought-out language that doesn't have features just because other languages have them.
+我一直在思考我的回答，虽然我仍然认为这个列表很好，但我认为我应该说，是各种特性如何协同工作让 F# 如此特别，而不是单个特性本身。它感觉像是一种经过深思熟虑的语言，不会因为其他语言有某些特性而添加这些特性。
 
-F# supports many paradigms, such as imperative and object-oriented programming but we will concentrate on how it encourages functional-first programming. My view of the choices F# has made in its language design can be summed up quite easily:
+F# 支持多种范式，如命令式和面向对象编程，但我们将重点关注它如何鼓励函数式优先编程。我对 F# 在语言设计中所做选择的看法可以很容易地总结为：
 
-> I enjoy functional programming but I like programming in F# even more.
+> 我喜欢函数式编程，但我更喜欢用 F# 编程。
 
-I'm not alone in feeling like this about F#. I hope that this book is a useful step on a similar journey to the one that I've been on.
+我并不是唯一一个对 F# 有这种感觉的人。我希望这本书能在类似的旅程中对你有所帮助。
 
-## Contents
+## 内容
 
-This book covers the core features and practices that a developer needs to know to work effectively on the types of F# Line of Business (LOB) applications we work on at Trustbit. It starts with the basics of types, function composition, pattern matching, and testing, and ends with an example of a simple website and API built using the wonderful [Giraffe](<https://github.com/giraffe-fsharp/Giraffe>) library.
+本书涵盖了开发人员需要了解的核心特性和实践，以便在我们在 Trustbit 上工作的 F# 业务线 (LOB) 应用程序中有效工作。它从基本类型、函数组合、模式匹配和测试开始，最后以使用出色的 [Giraffe](<https://github.com/giraffe-fsharp/Giraffe>) 库构建的简单网站和 API 示例结束。
 
-The original source for this book is two series of blog posts that I wrote on the [Trustbit blog](<https://trustbit.tech/blog>) in 2020/21. They have been significantly re-written to clarify and expand the explanations, to ensure that the code works on VS Code using the ionide F# extension, and to take advantage of some new F# features introduced in versions 5 and 6. 
+本书的原始来源是我在 2020/21 年在 [Trustbit 博客](<https://trustbit.tech/blog>) 上写的两系列博客文章。它们已被大幅重写，以澄清和扩展解释，确保代码在使用 ionide F# 扩展的 VS Code 上工作，并利用 F# 5 和 6 中引入的一些新特性。
 
-During the course of reading this book, you are going to be introduced to a wide range of features that are the essentials of F#:
+在阅读本书的过程中，你将被介绍到一系列 F# 的基本特性：
 
-#### Chapter 1 - A Simple Domain-Modelling Exercise
+#### 第 1 章 - 一个简单的领域建模练习
 
-In the opening chapter, we take a typical business problem and look at how we can use some of the features of F# to solve it.
+在开篇章节中，我们将处理一个典型的业务问题，并看看如何使用 F# 的一些特性来解决它。
 
-#### Chapter 2 - Functions
+#### 第 2 章 - 函数
 
-Chapter 2 is all about functions - What they are and how we use composition to build more useful functions.
+第 2 章全是关于函数——它们是什么以及我们如何使用组合来构建更有用的函数。
 
-#### Chapter 3 - Null and Exception Handling
+#### 第 3 章 - 空值和异常处理
 
-In this chapter, we look at the features F# offers that can eliminate null errors and reduce the need to throw exceptions.
+在本章中，我们将看看 F# 提供的特性，这些特性可以消除空值错误并减少抛出异常的需要。
 
-#### Chapter 4 - Organising Code and Testing
+#### 第 4 章 - 组织代码和测试
 
-In Chapter 4, we will look at how we should structure our code and files plus we get our first look at testing in F#.
+在第 4 章中，我们将看看如何组织我们的代码和文件，并首次了解 F# 中的测试。
 
-#### Chapter 5 - Introduction to Collections
+#### 第 5 章 - 集合简介
 
-F# has amazing support for handling collections of data. In this chapter, we will get an introduction to some of the features it offers and see how easy it is to compose collection functions into pipelines to transform data from one format to another.
+F# 对处理数据集合有着惊人的支持。在本章中，我们将介绍一些它提供的特性，并看看如何轻松地将集合函数组合成管道，以将数据从一种格式转换为另一种格式。
 
-#### Chapter 6 - Reading Data From a File
+#### 第 6 章 - 从文件中读取数据
 
-A short chapter where we see how to load data from a CSV file and parse the data into F# types.
+一个简短的章节，我们将看看如何从 CSV 文件加载数据并将数据解析为 F# 类型。
 
-#### Chapter 7 - Active Patterns
+#### 第 7 章 - 活动模式
 
-Pattern matching is a very powerful tool for the F# developer and active patterns extend that power by allowing us to build custom matchers that can be used to simplify our code and make it more readable.
+模式匹配是 F# 开发人员的一个非常强大的工具，活动模式通过允许我们构建自定义匹配器来扩展这种能力，这些匹配器可以用来简化我们的代码并使其更具可读性。
 
-#### Chapter 8 - Functional Validation
+#### 第 8 章 - 函数式验证
 
-In this chapter, we will use the tools from the previous chapter to add validation to the imported data from Chapter 6. We will also be introduced to one of the more unique features of F#, the computation expression.
+在本章中，我们将使用前一章中的工具为第 6 章中的导入数据添加验证。我们还将介绍 F# 的一个更独特的特性——计算表达式。
 
-#### Chapter 9 - Single-Case Discriminated Unions
+#### 第 9 章 - 单例判别联合
 
-In this chapter, we will see how we can reduce our reliance on primitive values in data structures and make our code more domain-centric.
+在本章中，我们将看看如何减少在数据结构中对原始值的依赖，并使我们的代码更具领域中心性。
 
-#### Chapter 10 - Object Programming
+#### 第 10 章 - 面向对象编程
 
-F# is a functional-first language but it does have excellent support for object programming. This chapter will introduce you to some of the features available.
+F# 是一种函数式优先的语言，但它对面向对象编程有着出色的支持。本章将介绍一些可用的特性。
 
-#### Chapter 11 - Recursion
+#### 第 11 章 - 递归
 
-Recursion is a powerful technique. In this chapter, we will see some of the ways that recursion can help us in our F# journey.
+递归是一种强大的技术。在本章中，我们将看看递归如何在我们的 F# 旅程中帮助我们。
 
-#### Chapter 12 - Computation Expressions
+#### 第 12 章 - 计算表达式
 
-In this chapter, we look more deeply into computation expressions, which are the generic way that F# handles working with effects like Option, Result, and Async.
+在本章中，我们将更深入地研究计算表达式，它们是 F# 处理 Option、Result 和 Async 等效果的通用方式。
 
-#### Chapter 13 - Introduction to Web Programming With Giraffe
+#### 第 13 章 - 使用 Giraffe 的 Web 编程简介
 
-In this chapter, we will go from nothing to having an API route and a web page using a really nice F# library called Giraffe and its partner, the Giraffe View Engine.
+在本章中，我们将从无到有，使用一个非常好的 F# 库 Giraffe 及其合作伙伴 Giraffe View Engine 构建一个 API 路由和一个网页。
 
-#### Chapter 14 - Creating an API With Giraffe
+#### 第 14 章 - 使用 Giraffe 创建 API
 
-In this chapter, we will extend the API part of the website.
+在本章中，我们将扩展网站的 API 部分。
 
-#### Chapter 15 - Creating Web Pages With Giraffe
+#### 第 15 章 - 使用 Giraffe 创建网页
 
-A short chapter where we will look at more of the features offered by the Giraffe View Engine.
+一个简短的章节，我们将看看 Giraffe View Engine 提供的更多特性。
 
-## F# Software Foundation
+## F# 软件基金会
 
-You should join the [F# Software Foundation](<https://foundation.fsharp.org/join>); It's free. By joining, you will be able to access the dedicated Slack channel where there are excellent tracks for beginners and beyond.
+你应该加入 [F# 软件基金会](<https://foundation.fsharp.org/join>)；它是免费的。加入后，你将能够访问专门的 Slack 频道，其中有适合初学者及更高级别的优秀资源。
 
-## About the author
+## 关于作者
 
-Ian Russell has over 25 years of experience as a software developer in the UK. He has held many technical roles over the years but made the decision many years ago that he could do the most good by remaining 'just a software developer'. Ian works remotely from the UK for Trustbit, a software solutions provider based in Vienna, on a cloud-based GPS aggregator for a logistics company written mostly in F#. Ian's .NET journey started with C# 1.1 in 2003 and he started playing in his own time with F# in 2010. He has been a regular speaker at UK user groups and conferences since 2009.
+Ian Russell 在英国有超过 25 年的软件开发经验。多年来他担任了许多技术职位，但多年前他决定留在“仅仅是一个软件开发人员”的角色上，他认为这样可以做出最大的贡献。Ian 远程为位于维也纳的软件解决方案提供商 Trustbit 工作，为一家物流公司开发基于云的 GPS 聚合器，主要使用 F# 编写。Ian 的 .NET 旅程始于 2003 年的 C# 1.1，并在 2010 年开始在业余时间玩 F#。自 2009 年以来，他一直是英国用户组和会议的常客演讲者。
+
